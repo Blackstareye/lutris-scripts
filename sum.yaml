@@ -16,11 +16,6 @@ game:
       II Files/HDEdition.big"
     exe: $GAMEDIR/drive_c/Program Files/BFME2 PatchSwitcher/BFME2 PatchSwitcher.exe
     name: '[PATCH] Patch Switcher'
-  - args: -mod "$GAMEDIR/drive_c/users/$USER/Application Data/My Battle for Middle-earth(tm)
-      II Files/HDEdition.big"
-    exe: $GAMEDIR/drive_c/Program Files/Electronic Arts/The Battle for Middle-earth(tm)
-      II/lotrbfme2.exe
-    name: '[MAIN] Battle of Middle Earth'
   prefix: $GAMEDIR
 installer:
 - task:
@@ -37,23 +32,22 @@ installer:
     prefix: $GAMEDIR
     working_dir: $DISC
 - execute:
-    command: "cd \\\"$GAMEDIR/drive_c/Program Files/Electronic Arts/\\\";\nif [ -d\
-      \ \"The Battle for Middle-earth(tm) II\" ];\n    then exit;\nelse \n    gamepath=$(find\
-      \ . -maxdepth 1 -type d -iname \"*battle for middle*\" -or -iname \"*schlacht\
-      \ um mittelerde*\");\n    gamepath=$(basename \"$gamepath\");\n    ln -s \"\
-      $gamepath\" \"The Battle for Middle-earth(tm) II\";\nfi; \n"
-- execute:
-    command: "cd \"$GAMEDIR/drive_c/users/$USER/AppData/Roaming/\";\nif [ -d \"My\
-      \ Battle for Middle-earth(tm) II Files\" ];\n    then exit;\nelse \n    gamepath=$(find\
-      \ . -maxdepth 1 -type d -iname \"*battle for middle*\" -or -iname \"*schlacht\
-      \ um mittelerde*\");\n    gamepath=$(basename \"$gamepath\");\n    ln -s \"\
-      $gamepath\" \"My Battle for Middle-earth(tm) II Files\"\nfi; \n"
+    command: cd "$GAMEDIR/drive_c/Program Files/Electronic Arts/";if [ -d "The Battle
+      for Middle-earth (tm) II" ]; then exit;else gamepath=$(find . -maxdepth 1 -type
+      d -iname "*battle for middle*" -or -iname "*schlacht um mittelerde*"); gamepath=$(basename
+      "$gamepath"); ln -s "$gamepath" "The Battle for Middle-earth (tm) II"; fi;
 - task:
     arch: win32
     description: Installing hd mod
     executable: hdmod
     name: wineexec
     prefix: $GAMEDIR
+- execute:
+    command: cd "$GAMEDIR/drive_c/users/$USER/AppData/Roaming/" && if [ -d "My Battle
+      for Middle-earth(tm) II Files" ]; then exit; else gamepath=$(find . -maxdepth
+      1 -type d -iname "*battle for middle*" -or -iname "*schlacht um mittelerde*");
+      gamepath=$(basename "$gamepath"); ln -s "$gamepath" "My Battle for Middle-earth(tm)
+      II Files"; fi
 - task:
     arch: win32
     description: Installing unoffical patch 1.09
