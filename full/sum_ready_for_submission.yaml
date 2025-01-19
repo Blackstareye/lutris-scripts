@@ -1,0 +1,83 @@
+description: When asked to run the Patch Switcher do so and choose the patch you want
+  to install. Version 1.09 is recommend but can be changed at any time.The game features
+  a limited amount of in-game resolution options. The default will be 1080p. To use
+  e.g. 1440p you'll have to edit the Options.ini manually or re-run the Patch Switcher
+  and click the "Fix my resolution" button.
+game_slug: lord-of-the-rings-battle-for-middle-earth-ii
+gogslug: ''
+humblestoreid: ''
+installer_slug: the-lord-of-the-rings-the-bat-dvd-fan-patch-hd-mod
+name: 'The Lord of the Rings: The Battle for Middle-earth II'
+notes: ''
+runner: wine
+script:
+  # edited from DVD + Fan Patch + HD Mod
+  files:
+  - patch109:
+      filename: BFME2 PatchSwitcher Setup.exe
+      referer: https://duckduckgo.com
+      url: http://www.shatabrick.com/downloads/BFME2%20PatchSwitcher%20Setup.exe
+  - hdmod: N/A:Download the Mod from https://www.moddb.com/mods/battle-for-middle-earth-2-hd-edition/downloads/bfme-2-hd-edition-v-11
+  game:
+    arch: win32
+    args: -mod "$GAMEDIR/drive_c/users/$USER/Application Data/My Battle for Middle-earth(tm)
+      II Files/HDEdition.big"
+    exe: $GAMEDIR/drive_c/Program Files/Electronic Arts/The Battle for Middle-earth
+      (tm) II/lotrbfme2.exe
+    launch_configs:
+    - args: -mod "$GAMEDIR/drive_c/users/$USER/Application Data/My Battle for Middle-earth(tm)
+        II Files/HDEdition.big"
+      exe: $GAMEDIR/drive_c/Program Files/BFME2 PatchSwitcher/BFME2 PatchSwitcher.exe
+      name: '[PATCH] Patch Switcher'
+    prefix: $GAMEDIR
+  installer:
+  - task:
+      arch: win32
+      name: create_prefix
+      prefix: $GAMEDIR
+  - insert-disc:
+      requires: AutoRun.exe
+  - task:
+      arch: win32
+      description: Run Installer
+      executable: $DISC/AutoRun.exe
+      name: wineexec
+      prefix: $GAMEDIR
+      working_dir: $DISC
+  - execute:
+      command: cd "$GAMEDIR/drive_c/Program Files/Electronic Arts/";if [ -d "The Battle
+        for Middle-earth (tm) II" ]; then exit;else gamepath=$(find . -maxdepth 1 -type
+        d -iname "*battle for middle*" -or -iname "*schlacht um mittelerde*"); gamepath=$(basename
+        "$gamepath"); ln -s "$gamepath" "The Battle for Middle-earth (tm) II"; fi;
+  - task:
+      arch: win32
+      description: Installing hd mod
+      executable: hdmod
+      name: wineexec
+      prefix: $GAMEDIR
+  - execute:
+      command: cd "$GAMEDIR/drive_c/users/$USER/AppData/Roaming/" && if [ -d "My Battle
+        for Middle-earth(tm) II Files" ]; then exit; else gamepath=$(find . -maxdepth
+        1 -type d -iname "*battle for middle*" -or -iname "*schlacht um mittelerde*");
+        gamepath=$(basename "$gamepath"); ln -s "$gamepath" "My Battle for Middle-earth(tm)
+        II Files"; fi
+  - task:
+      arch: win32
+      description: Installing unoffical patch 1.09
+      executable: patch109
+      name: wineexec
+      prefix: $GAMEDIR
+  - write_file:
+      content: 'AudioLOD = Low
+  
+        HasSeenLogoMovies = yes
+  
+        IdealStaticGameLOD = VeryLow
+  
+        Resolution = 1920 1080
+  
+        StaticGameLOD = VeryLow
+  
+        TimesInGame = 2'
+      file: $GAMEDIR/drive_c/users/$USER/AppData/Roaming/My Battle for Middle-earth(tm)
+        II Files/Options.ini
