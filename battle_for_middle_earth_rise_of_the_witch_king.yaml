@@ -23,6 +23,13 @@ installer:
       for Middle-earth(tm) II" ]; then exit; else gamepath=$(find . -maxdepth 1 -type
       d -iname "*battle for middle*" -or -iname "*schlacht um mittelerde*"); gamepath=$(basename
       "$gamepath"); ln -s "$gamepath" "The Battle for Middle-earth(tm) II"; fi; '
+- execute:
+    command: "cd \"$GAMEDIR/drive_c/users/$USER/AppData/Roaming/\";\nif [ -d \"My\
+      \ The Lord of the Rings, The Rise of the Witch-king Files\" ]; \n    then exit;\
+      \ \nelse \n    gamepath=$(find . -maxdepth 1 -type d -iname \"*battle for middle*\"\
+      \ -or -iname \"*schlacht um mittelerde*\"); \n    gamepath=$(basename \"$gamepath\"\
+      ); \n    ln -s \"$gamepath\" \"My The Lord of the Rings, The Rise of the Witch-king\
+      \ Files\"; \nfi; '\n"
 - insert-disc:
     requires: autorun.exe
 - task:
