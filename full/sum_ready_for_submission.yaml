@@ -4,6 +4,7 @@ description: When asked to run the Patch Switcher do so and choose the patch you
   e.g. 1440p you'll have to edit the Options.ini manually or re-run the Patch Switcher
   and click the "Fix my resolution" button.
 game_slug: lord-of-the-rings-battle-for-middle-earth-ii
+slug: lord-of-the-rings-battle-for-middle-earth-ii-manual
 gogslug: ''
 humblestoreid: ''
 installer_slug: the-lord-of-the-rings-the-bat-dvd-fan-patch-hd-mod
