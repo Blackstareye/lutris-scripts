@@ -19,4 +19,4 @@ script:
       name: wineexec
       prefix: $GAMEDIR
       working_dir: $DISC
-# it does not run ? - maybe you need to crack open that iso and look if there is something *hust*
+# it does not run ? - maybe you need to crack open that cd and look if there is something *hust*
