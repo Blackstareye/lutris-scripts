@@ -5,9 +5,9 @@ game:
   exe: $GAMEDIR/drive_c/Program Files/Electronic Arts/The Lord of the Rings, The Rise
     of the Witch-king/lotrbfme2ep1.exe
   launch_configs:
-  - args: -mod "$GAMEDIR/drive_c/users/$USER/AppData/Roaming/My Battle for Middle-earth(tm)
+   args: -mod "$GAMEDIR/drive_c/users/$USER/AppData/Roaming/My Battle for Middle-earth(tm)
       II Files/HDEdition.big"
-    exe: $GAMEDIR/drive_c/Program Files/BFME2 PatchSwitcher/BFME2 PatchSwitcher.exe
+    exe: $GAMEDIR/drive_c/Program Files/-BFME2 PatchSwitcher/BFME2 PatchSwitcher.exe
     name: '[PATCH] Patch Switcher'
   - args: -mod "$GAMEDIR/drive_c/users/$USER/AppData/Roaming/My Battle for Middle-earth(tm)
       II Files/HDEdition.big"
