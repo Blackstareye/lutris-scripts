@@ -11,7 +11,7 @@ installer_slug: the-lord-of-the-rings-the-bat-dvd-fan-patch-hd-mod
 name: 'The Lord of the Rings: The Battle for Middle-earth II'
 notes: ''
 runner: wine
-version: windows
+version: "windows"
 script:
   # edited from DVD + Fan Patch + HD Mod
   files:
