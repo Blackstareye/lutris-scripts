@@ -2,7 +2,7 @@ name: 'The Lord of the Rings: The Battle for Middle-earth II: The Rise of the Wi
 slug: lord-of-the-rings-battle-rise-of-the-king-manual
 runner: wine
 description: 'Adds the Addon Rise of the Witchking - (german version works as well)'
-game_slug: lord-of-the-rings-battle-for-middle-earth-ii-rise-
+game_slug: the-lord-of-the-rings-the-battle-for-middle-earth-ii-the-rise-of-the-witch-king
 version: "windows"
 script:
   files:
