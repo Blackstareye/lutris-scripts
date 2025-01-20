@@ -5,69 +5,69 @@ description: 'Adds the Addon Rise of the Witchking - (german version works as we
 game_slug: lord-of-the-rings-battle-for-middle-earth-ii-rise-
 version: "windows"
 script:
-files:
-- patch202: https://gitlab.com/rotwk202/2.02-installer/raw/binaries/202_v9_full.exe
-game:
-  arch: win32
-  exe: $GAMEDIR/drive_c/Program Files/Electronic Arts/The Lord of the Rings, The Rise
-    of the Witch-king/lotrbfme2ep1.exe
-  launch_configs:
-  - args: -mod "$GAMEDIR/drive_c/users/$USER/Application Data/My Battle for Middle-earth(tm)
-      II Files/HDEdition.big"
-    exe: $GAMEDIR/drive_c/Program Files/BFME2 PatchSwitcher/BFME2 PatchSwitcher.exe
-    name: '[PATCH] Patch Switcher'
-  - args: -mod "$GAMEDIR/drive_c/users/$USER/AppData/My Battle for Middle-earth(tm)
-      II Files/HDEdition.big"
-    exe: $GAMEDIR/drive_c/Program Files/Electronic Arts/The Battle for Middle-earth(tm)
-      II/lotrbfme2.exe
-    name: '[MAIN] Battle of Middle Earth'
-  prefix: $GAMEDIR
-installer:
-- execute:
-    command: 'cd "$GAMEDIR/drive_c/Program Files/Electronic Arts/"; if [ -d "The Battle
-      for Middle-earth (tm) II" ]; then exit; else gamepath=$(find . -maxdepth 1 -type
-      d -iname "*battle for middle*" -or -iname "*schlacht um mittelerde*"); gamepath=$(basename
-      "$gamepath"); ln -s "$gamepath" "The Battle for Middle-earth (tm) II"; fi; '
-- insert-disc:
-    requires: autorun.exe
-- task:
+  files:
+  - patch202: https://gitlab.com/rotwk202/2.02-installer/raw/binaries/202_v9_full.exe
+  game:
     arch: win32
-    description: Run Installer
-    executable: $DISC/autorun.exe
-    name: wineexec
+    exe: $GAMEDIR/drive_c/Program Files/Electronic Arts/The Lord of the Rings, The Rise
+      of the Witch-king/lotrbfme2ep1.exe
+    launch_configs:
+    - args: -mod "$GAMEDIR/drive_c/users/$USER/Application Data/My Battle for Middle-earth(tm)
+        II Files/HDEdition.big"
+      exe: $GAMEDIR/drive_c/Program Files/BFME2 PatchSwitcher/BFME2 PatchSwitcher.exe
+      name: '[PATCH] Patch Switcher'
+    - args: -mod "$GAMEDIR/drive_c/users/$USER/AppData/My Battle for Middle-earth(tm)
+        II Files/HDEdition.big"
+      exe: $GAMEDIR/drive_c/Program Files/Electronic Arts/The Battle for Middle-earth(tm)
+        II/lotrbfme2.exe
+      name: '[MAIN] Battle of Middle Earth'
     prefix: $GAMEDIR
-    working_dir: $DISC
-- execute:
-    command: "cd \"$GAMEDIR/drive_c/Program Files/Electronic Arts/\"; if [ -d \"The\
-      \ Lord of the Rings, The Rise of the Witch-king\" ]; then exit; else gamepath=$(find\
-      \ . -maxdepth 1 -type d -iname \"*rise of the witch-king*\" -or -iname \"*Aufstieg\
-      \ des Hexenk\xF6nigs*\"); gamepath=$(basename \"$gamepath\"); ln -s \"$gamepath\"\
-      \ \"The Lord of the Rings, The Rise of the Witch-king\"; fi; "
-- task:
-    arch: win32
-    description: Installing unoffical patch 2.02 v8.0.0
-    executable: patch202
-    name: wineexec
-    prefix: $GAMEDIR
-- execute:
-    command: cd "$GAMEDIR/drive_c/users/$USER/AppData/Roaming/" && if [ -d "My The
-      Lord of the Rings, The Rise of the Witch-king Files" ]; then exit; else gamepath=$(find
-      . -maxdepth 1 -type d -iname "*rise of the witch-king*" -or -iname "*Aufstieg
-      des Hexenk*nigs*"); gamepath=$(basename "$gamepath"); ln -s "$gamepath" "My
-      The Lord of the Rings, The Rise of the Witch-king Files"; fi
-- write_file:
-    content: 'AudioLOD = Low
-
-      HasSeenLogoMovies = yes
-
-      IdealStaticGameLOD = VeryLow
-
-      Resolution = 1920 1080
-
-      StaticGameLOD = VeryLow
-
-
-      TimesInGame = 2'
-    file: $GAMEDIR/drive_c/users/$USER/AppData/Roaming/My The Lord of the Rings, The
-      Rise of the Witch-king Files/Options.ini
-requires: lord-of-the-rings-battle-for-middle-earth-ii
+  installer:
+  - execute:
+      command: 'cd "$GAMEDIR/drive_c/Program Files/Electronic Arts/"; if [ -d "The Battle
+        for Middle-earth (tm) II" ]; then exit; else gamepath=$(find . -maxdepth 1 -type
+        d -iname "*battle for middle*" -or -iname "*schlacht um mittelerde*"); gamepath=$(basename
+        "$gamepath"); ln -s "$gamepath" "The Battle for Middle-earth (tm) II"; fi; '
+  - insert-disc:
+      requires: autorun.exe
+  - task:
+      arch: win32
+      description: Run Installer
+      executable: $DISC/autorun.exe
+      name: wineexec
+      prefix: $GAMEDIR
+      working_dir: $DISC
+  - execute:
+      command: "cd \"$GAMEDIR/drive_c/Program Files/Electronic Arts/\"; if [ -d \"The\
+        \ Lord of the Rings, The Rise of the Witch-king\" ]; then exit; else gamepath=$(find\
+        \ . -maxdepth 1 -type d -iname \"*rise of the witch-king*\" -or -iname \"*Aufstieg\
+        \ des Hexenk\xF6nigs*\"); gamepath=$(basename \"$gamepath\"); ln -s \"$gamepath\"\
+        \ \"The Lord of the Rings, The Rise of the Witch-king\"; fi; "
+  - task:
+      arch: win32
+      description: Installing unoffical patch 2.02 v8.0.0
+      executable: patch202
+      name: wineexec
+      prefix: $GAMEDIR
+  - execute:
+      command: cd "$GAMEDIR/drive_c/users/$USER/AppData/Roaming/" && if [ -d "My The
+        Lord of the Rings, The Rise of the Witch-king Files" ]; then exit; else gamepath=$(find
+        . -maxdepth 1 -type d -iname "*rise of the witch-king*" -or -iname "*Aufstieg
+        des Hexenk*nigs*"); gamepath=$(basename "$gamepath"); ln -s "$gamepath" "My
+        The Lord of the Rings, The Rise of the Witch-king Files"; fi
+  - write_file:
+      content: 'AudioLOD = Low
+  
+        HasSeenLogoMovies = yes
+  
+        IdealStaticGameLOD = VeryLow
+  
+        Resolution = 1920 1080
+  
+        StaticGameLOD = VeryLow
+  
+  
+        TimesInGame = 2'
+      file: $GAMEDIR/drive_c/users/$USER/AppData/Roaming/My The Lord of the Rings, The
+        Rise of the Witch-king Files/Options.ini
+  requires: lord-of-the-rings-battle-for-middle-earth-ii
