@@ -21,14 +21,12 @@ script:
   - hdmod: N/A:Download the Mod from https://www.moddb.com/mods/battle-for-middle-earth-2-hd-edition/downloads/bfme-2-hd-edition-v-11
   game:
     arch: win32
-    args: -mod "$GAMEDIR/drive_c/users/$USER/Application Data/My Battle for Middle-earth(tm)
+    args: -mod "$GAMEDIR/drive_c/users/$USER/AppData/Roaming/My Battle for Middle-earth(tm)
       II Files/HDEdition.big"
     exe: $GAMEDIR/drive_c/Program Files/Electronic Arts/The Battle for Middle-earth
       (tm) II/lotrbfme2.exe
     launch_configs:
-    - args: -mod "$GAMEDIR/drive_c/users/$USER/Application Data/My Battle for Middle-earth(tm)
-        II Files/HDEdition.big"
-      exe: $GAMEDIR/drive_c/Program Files/BFME2 PatchSwitcher/BFME2 PatchSwitcher.exe
+    - exe: $GAMEDIR/drive_c/Program Files/BFME2 PatchSwitcher/BFME2 PatchSwitcher.exe
       name: '[PATCH] Patch Switcher'
     prefix: $GAMEDIR
   installer:
