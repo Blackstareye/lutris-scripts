@@ -1,0 +1,22 @@
+name: 'HP Quidditch World Cup CDROM (Windows)'
+slug: harry-potter-quidditch-world-cup
+runner: wine
+description: ''
+game_slug: harry-potter-quidditch-world-cup
+version: "windows"
+script:
+  game:
+    arch: win64
+    exe: $GAMEDIR/drive_c/Program Files (x86)/EA GAMES/Harry Potter - Quidditch-WM/QWC.exe
+    prefix: $GAMEDIR
+  installer:
+  - insert-disc:
+      requires: setup.exe
+  - task:
+      arch: win64
+      description: Run Installer
+      executable: $DISC/setup.exe
+      name: wineexec
+      prefix: $GAMEDIR
+      working_dir: $DISC
+# it does not run ? - maybe you need to crack open that iso and look if there is something *hust*
