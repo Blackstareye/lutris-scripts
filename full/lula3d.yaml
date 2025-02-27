@@ -1,0 +1,21 @@
+name: 'Lula 3d'
+slug: lula3d
+runner: wine
+description: ''
+game_slug: lula3d
+version: "windows"
+script:
+  game:
+    arch: win32
+    exe: $GAMEDIR/drive_c/Program Files (x86)/Lula 3D/Run/C2RUNTIME.exe
+    prefix: $GAMEDIR
+  installer:
+  - insert-disc:
+      requires: Setup.exe
+  - task:
+      arch: win32
+      description: Run Installer
+      executable: $DISC/Setup.exe
+      name: wineexec
+      prefix: $GAMEDIR
+      working_dir: $DISC
