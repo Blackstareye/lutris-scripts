@@ -1,0 +1,81 @@
+description: ''
+game_slug: harry-potter-and-the-order-of-the-phoenix
+gogslug: ''
+humblestoreid: ''
+installer_slug: harry-potter-and-the-order-of-retail-dvd
+name: Harry Potter and the Order of the Phoenix
+notes: '- Feedback, Issues and Pull Requests are gladly welcome at: https://codeberg.org/lutris-forge/lutris-harry-potter-order-of-the-phoenix'
+runner: wine
+script:
+  game:
+    arch: win64
+    exe: drive_c/Program Files (x86)/Electronic Arts/Harry Potter and the Order of
+      the Phoenix/hp.exe
+    prefix: $GAMEDIR
+  installer:
+  - insert-disc:
+      requires: ootp_icon.ico
+  - task:
+      description: Creating Wine prefix
+      install_mono: false
+      name: create_prefix
+      prefix: $GAMEDIR
+  - task:
+      description: Installing DirectX 9
+      # d3dx10 directx9 
+      app: vcrun2005 vcrun2008 d3dx9_31  xinput
+      # app: d3dx9_43
+      name: winetricks
+      prefix: $GAMEDIR
+  - task:
+      app: d3dx9
+      arch: win64
+      description: Installing d3dx9
+      name: winetricks
+      prefix: $GAMEDIR
+  - task:
+      app: d3dx9_36
+      arch: win64
+      description: Installing d3dx9_36
+      name: winetricks
+      prefix: $GAMEDIR
+  # - task:
+  #     name: set_regedit
+  #     path: HKEY_LOCAL_MACHINE\Software\Microsoft\DirectX
+  #     key: InstalledVersion
+  #     value: '0000000900000000'
+  #     type: REG_BINARY
+  # - task:
+  #     name: set_regedit
+  #     path: HKEY_LOCAL_MACHINE\Software\Microsoft\DirectX
+  #     key: Version
+  #     value: '4.09.00.0904'
+  #     type: REG_SZ
+  
+  # - task:
+  #     description: Installing...Direct X
+  #     executable: $DISC/DirectX/DXSETUP.exe
+  #     name: wineexec
+  #     prefix: $GAMEDIR
+  - task:
+      description: Installing...
+      executable: $DISC/AutoRun.exe
+      name: wineexec
+      prefix: $GAMEDIR
+  # - execute:
+  #     command: cd "$GAMEDIR/drive_c/Program Files (x86)/Electronic Arts"; if [ -d "Harry Potter and the Order of the Phoenix" ]; then exit; 
+  #       else gamepath=$(find . -maxdepth 1 -type d -iname "*phoenix*" -or -iname "*phönix*"); gamepath=$(basename "$gamepath");
+  #       ln -s "$gamepath" "Harry Potter and the Order of the Phoenix"; fi;
+  # - execute:
+  #     args: -c '[ "$(ls -1 "$GAMEDIR/drive_c/Program Files (x86)/Electronic Arts"
+  #       | wc -l)" -eq 1 ]' || exit 1
+  #     file: bash
+  # - execute:
+  #     command: '[ -d "$INSTALL_ROOT/$PRODUCT" ] || ln -s "$INSTALL_ROOT"/{*,"$PRODUCT"}'
+  #     env:
+  #       INSTALL_ROOT: $GAMEDIR/drive_c/Program Files (x86)/Electronic Arts
+  #       PRODUCT: Harry Potter and the Order of the Phoenix
+slug: harry-potter-and-the-order-of-retail-dvd
+steamid: null
+version: Retail, DVD
+year: 2007

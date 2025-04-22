@@ -1,0 +1,37 @@
+description: 'feature rich musicplayer'
+game_slug: musicbee
+gogslug: ''
+humblestoreid: ''
+installer_slug: musicbee
+name: Musicbee
+notes: '- Feedback, Issues and Pull Requests are gladly welcome at: https://github.com/Blackstareye/lutris-scripts'
+runner: wine
+script:
+  files:
+     - install_exe: "N/A:Select the Musicbee installer setup file"
+  game:
+    arch: win32
+    exe: $GAMEDIR/drive_c/Program Files/MusicBee/MusicBee.exe
+    prefix: $GAMEDIR
+  installer:
+  - task:
+      description: Creating Wine prefix
+      install_mono: false
+      name: create_prefix
+      prefix: $GAMEDIR
+  - task:
+      description: Installing Dotnet
+      # d3dx10 directx9 
+      app: dotnet48
+      # app: d3dx9_43
+      name: winetricks
+      prefix: $GAMEDIR
+  - task:
+      description: Installing...
+      executable: install_exe
+      name: wineexec
+      prefix: $GAMEDIR
+slug: musicbee
+steamid: null
+version: Exe
+year: 2007
