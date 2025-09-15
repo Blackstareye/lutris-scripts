@@ -1,0 +1,49 @@
+
+name: '(Cpt) Claw 1997 Platformer'
+slug: claw
+runner: wine
+description: ''
+game_slug: claw
+version: "windows"
+script:
+  files:
+  - gamezip: N/A:Select the games zip file (Download from https://captainclaw.net/en/downloads.html)
+  - gerrez: 'N/A: Select the games german .REZ files (extracted with DragonUnpacker
+      to a zip)'
+  - germovies: 'N/A: Select the german .FEZ file (can be copied from the DVD ISO: https://archive.org/download/claw-pc-redump/CLAW-PC-REDUMP/Claw%20%28Germany%29%20%28Rerelease%29%20%2819981201%29.zip)'
+  game:
+    arch: win64
+    exe: $GAMEDIR/drive_c/Program Files/captain-claw/CLAW.EXE
+    prefix: $GAMEDIR
+  installer:
+  - task:
+      arch: win64
+      name: create_prefix
+      prefix: $GAMEDIR
+  - task:
+      app: xvid
+      arch: win64
+      description: Installing dependencies
+      name: winetricks
+      prefix: $GAMEDIR
+  - extract:
+      dst: $CACHE
+      file: gamezip
+  - copy:
+      dst: $CACHE/assets_eng
+      src: $CACHE/Assets
+  - extract:
+      dst: $CACHE/assets_ger
+      file: gerrez
+  - copy:
+      dst: $CACHE/Assets
+      src: $CACHE/assets_ger/
+  - copy:
+      dst: $CACHE
+      src: germovies
+  - move:
+      dst: $GAMEDIR/drive_c/Program Files/captain-claw/
+      src: $CACHE/
+  wine:
+    overrides:
+      ddraw: native,builtin
