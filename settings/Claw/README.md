@@ -2,15 +2,21 @@
 
 Best Version: CrazyHook - <https://captainclaw.net/en/downloads.html>
 
-## FAQ
+## FAQ - Files
 
 All Files can be found on the iso of the game cd - `.FEZ` and `.REZ` are localized. So a **german** disc is required for german sfx and text.
-1.What is `.FEZ` ?
-    **Movie** files for claw
-2.What is `.REZ` ?
-    **Ressource** files for claw - contains sprite, animation and text.
-3.What is `.SF2` ?
-    **Midi** files for claw - used for background music in combination of a synthesizer e.g. qsynth on linux - not localized
+
+### What is `.FEZ` ?
+
+**Movie** files for claw
+
+### What is `.REZ` ?
+
+**Ressource** files for claw - contains sprite, animation and text.
+
+### What is `.SF2` ?
+
+**Midi** files for claw - used for background music in combination of a synthesizer e.g. qsynth on linux - not localized
 
 ## Music for Claw
 
