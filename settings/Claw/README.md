@@ -18,9 +18,16 @@ All Files can be found on the iso of the game cd - `.FEZ` and `.REZ` are localiz
 
 **Midi** files for claw - used for background music in combination of a synthesizer e.g. qsynth on linux - not localized
 
+### Do I need `CLAW4.SF2` or `CLAW.SF2` for the background music ?
+
+Both work, but CLAW4.SF2 has the better quality and a more "full" orchestra.
+
 ## Music for Claw
 
+Requirement: The File `CLAW4.SF2` or `CLAW.SF2` needs to be within the gamefolder.
+
 <https://docs.google.com/document/d/18cRRIteJDQn-CBmRg6dTErAG0EIQwiTElpupEn6HLs4/edit?tab=t.0>
+
 
 If you want music you need to use a synthesizer like QSynth. Extract the CLAW.SF2 File from the Iso and put it into the folder:
 
@@ -53,4 +60,4 @@ flatpak run org.rncbc.qsynth
 
 The soundfile can be extracted from the claw cd image
 
-the file is called `CLAW.SF2`
+the file is called `CLAW.SF2` or `CLAW4.SF2`
