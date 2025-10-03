@@ -1,0 +1,33 @@
+name: 'Angeln'
+slug: angeln
+runner: wine
+description: 'Angelspiel - you need the cd or iso for that'
+game_slug: angeln
+version: "windows"
+
+script:
+  files:
+    - nocd: N/A:Select the no cd file
+
+  game:
+    arch: win32
+    exe: "$GAMEDIR/drive_c/Program Files/Switlle/Fishing Simulator for Relax/fishing_game.exe"
+    prefix: $GAMEDIR
+  installer:
+    - insert-disc:
+        requires: fisch/FishingSimulatorforRelaxFull.exe 
+    - task:
+        description: Installing Angeln 
+        executable: $DISC/fisch/FishingSimulatorforRelaxFull.exe
+        name: wineexec
+    - move:
+        dst: "$GAMEDIR/drive_c/Program Files/Switlle/Fishing Simulator for Relax/fishing_game.exe.bak"
+        src: "$GAMEDIR/drive_c/Program Files/Switlle/Fishing Simulator for Relax/fishing_game.exe"
+    - copy:
+        dst: "$GAMEDIR/drive_c/Program Files/Switlle/Fishing Simulator for Relax"
+        src: nocd
+
+wine:
+  dxvk: true
+  vkd3d: true
+  dgvoodoo2: true
