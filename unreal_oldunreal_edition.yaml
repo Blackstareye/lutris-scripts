@@ -9,7 +9,7 @@ script:
   files:
     - gamezip: N/A:Select the games zip file 'unreal_gold.zip' (Download from https://www.oldunreal.com/downloads/unreal/full-game-installers/ )
   game:
-    arch: win32
+    arch: win64
     exe: $GAMEDIR/drive_c/Unreal/System/Unreal.exe
     prefix: $GAMEDIR
   installer:
@@ -17,7 +17,7 @@ script:
       dst: $CACHE
       file: gamezip
   - task:
-      arch: win32
+      arch: win64
       description: Run Installer
       executable: $CACHE/Unreal_Gold.exe
       name: wineexec
